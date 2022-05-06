@@ -1,0 +1,36 @@
+#!/bin/bash
+
+#Backup are done using this:
+
+#Backup Server:
+z=10.1.1.2
+
+
+#Backup Locations that needs to be backed up:
+a=/home
+b=/etc
+c=/var
+d=/usr
+e=/opt
+f=/srv
+g=/root
+
+#Getting Timestamps:
+samay=$(date)
+
+#Remote Location:
+x=/location/drive/
+
+
+sshpass -f ~/.ssh/breaker rsync  -azvh -e 'ssh -p 2213'  --delete root@$z:{$a,$b,$c,$d,$e,$f,$e,$f,$g}  $x > /var/log/backupjob-inc.log 2>&1
+
+#Getting logs over here:
+logs=$(cat /var/log/backupjob-inc.log)
+
+
+#Notification Status:
+
+echo " $samay 
+Backup Information is saved in /var/log/backupjob-inc.log. 
+Backup Job Details in-depth follows : $logs
+" | mail -s "Mail Server Backup Job is Finished" xyz@gmail.com
