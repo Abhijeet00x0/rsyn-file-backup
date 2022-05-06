@@ -22,7 +22,7 @@ samay=$(date)
 x=/location/drive/
 
 
-sshpass -f ~/.ssh/breaker rsync  -azvh -e 'ssh -p 2213'  --delete root@$z:{$a,$b,$c,$d,$e,$f,$e,$f,$g}  $x > /var/log/backupjob-inc.log 2>&1
+sshpass -f ~/.ssh/breaker rsync  -azvh -e 'ssh -p 2234'  --delete root@$z:{$a,$b,$c,$d,$e,$f,$e,$f,$g}  $x > /var/log/backupjob-inc.log 2>&1
 
 #Getting logs over here:
 logs=$(cat /var/log/backupjob-inc.log)
